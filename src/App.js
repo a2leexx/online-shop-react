@@ -80,7 +80,6 @@ class App extends React.Component
       { product_name : 'Кроссовки 2', available_size : [40, 41, 43, 45, 46], price : 4500,
         brand : 'Reebok', category: 'Кроссовки' }
     ];
-
     let products = [];
     let available_sizes = new Set();
     let selected_sizes = new Set();
@@ -90,17 +89,17 @@ class App extends React.Component
     let search_text = this.state.search_text.toLocaleLowerCase().trim();
 
     for (let product of all_products)
-    {
       product.product_id = product_id++;
+
+    products = all_products.filter((product) => {
       let product_name = product.product_name.toLocaleLowerCase();
       let category = product.category.toLocaleLowerCase();
       let brand = product.brand.toLocaleLowerCase();
 
-      if (product_name.indexOf(search_text) !== -1 || 
+      return product_name.indexOf(search_text) !== -1 || 
           category.indexOf(search_text) !== -1 || 
-          brand.indexOf(search_text) !== -1)
-        products.push(product);
-    }
+          brand.indexOf(search_text) !== -1;
+    });
 
     for (let product of products) {
       for (let s of product.available_size)
@@ -169,18 +168,38 @@ class App extends React.Component
             onClick={()=>{this.onToogleButtonClick(x, 'selected_categories')}}/>
         </li>
       );
-      let products = this.state.products.map((x) => 
+
+      // фильтруем список продуктов по размерам
+      let products = this.state.products.filter((x) => {
+        for (let s of x.available_size) 
+          if (selected.has(s) || selected.size === 0)
+            return true;
+
+        return false;
+      });
+
+      // по категориям
+      products = products.filter((x) => {
+        return sel_cat.has(x.category) || sel_cat.size === 0;
+      });
+
+      // по цене
+      let min_price = this.state.min_price;
+      let max_price = this.state.max_price;
+      let start = this.state.start;
+      let end = this.state.end;
+
+      products = products.filter((x) => {
+        return start <= x.price && x.price <= end;
+      })
+
+      products = products.map((x) => 
         <li key={x.product_id}><Product product={x}/></li>
       );
 
       if (products.length === 0) {
         products.push(<li key="-1">Увы, ничего не найдено!</li>)
       }
-
-      let min_price = this.state.min_price;
-      let max_price = this.state.max_price;
-      let start = this.state.start;
-      let end = this.state.end;
 
       return (<div>
         <div>
