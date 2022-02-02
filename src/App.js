@@ -159,12 +159,13 @@ class App extends React.Component
       let sel_cat = this.state.selected_categories;
       let av_sizes = [...this.state.available_sizes].map((x) => 
         <li key={x}>
-          <Checkbox label={x} selected={selected.has(x)} onClick={()=>{this.onToogleButtonClick(x, 'selected_sizes')}}/>
+          <Checkbox label={x} selected={selected.has(x)}
+            onClick={()=>{this.onToogleButtonClick(x, 'selected_sizes')}}/>
         </li>
       );
       let categories = [...this.state.categories].map((x) => 
         <li key={x}>
-          <Checkbox label={x} selected={sel_cat.has(x)} 
+          <Checkbox label={x} selected={sel_cat.has(x)}
             onClick={()=>{this.onToogleButtonClick(x, 'selected_categories')}}/>
         </li>
       );
