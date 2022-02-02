@@ -39,7 +39,7 @@ ul.size-list {
 
 /* Список доступных категорий товаров */
 ul.category-list {
-  padding-right: 0px;
+  padding-left: 0px;
 }
 
 .category-list li {
