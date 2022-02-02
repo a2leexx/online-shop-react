@@ -6,7 +6,7 @@ function Checkbox({selected, label, onClick})
   return (
     <label>
       <input type="checkbox" defaultChecked={selected} onChange={onClick}/>
-      {label}
+      <span>{label}</span>
     </label>
   );
 }
@@ -197,11 +197,11 @@ class App extends React.Component
           <DualSlider min_value={min_price} max_value={max_price} start={start} end={end} 
             onChange={e => this.onPriceRangeChange(e)}/>
         <div>
-          <ul>
+          <ul className="category-list">
             {categories}
           </ul>
           <p>Доступные размеры:</p>
-          <ul>
+          <ul className="size-list">
             {av_sizes}
           </ul>
         </div>

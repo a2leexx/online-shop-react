@@ -1,3 +1,86 @@
+/* Список доступных размеров */
+.size-list input {
+  display: none;
+}
+
+.size-list span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  border-style: solid;
+  margin: 10px;
+  color: #000;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.5rem;
+  background-color: #f8f8f8;
+  border-color: #e8e8e8;
+  font-weight: normal;
+  font-size: 0.75rem;
+}
+
+.size-list input:checked + span {
+  background-color: white;
+  box-shadow: 0 0 5px 1px #e8e8e8;
+  border-color: #e8e8e8;
+  font-weight: bolder;
+}
+
+.size-list li {
+  display: inline-flex;
+  list-style-type: none;
+}
+
+ul.size-list {
+  padding-left: 0px;
+}
+
+/* Список доступных категорий товаров */
+ul.category-list {
+  padding-right: 0px;
+}
+
+.category-list li {
+  list-style-type: none;
+}
+
+.category-list input {
+  vertical-align: -0.5em;
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 1rem;
+  border-color: #e8e8e8;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 0.5rem;
+}
+
+.category-list input:checked {
+  background-color: black;
+  border-color: black;
+}
+
+.category-list input:checked::after {
+  top: 0.275em;
+  left: 0.275rem;
+  background-color: white;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 100%;
+  content: "";
+  position: relative;
+  display: block;
+}
+
+
+.available-sizes {
+  width: 20vw;
+  height: 200px;
+}
+
 .App {
   text-align: center;
 }
