@@ -23,7 +23,7 @@
 
 .size-list input:checked + span {
   background-color: white;
-  box-shadow: 0 0 5px 1px #e8e8e8;
+  outline: #e8e8e8 solid 2px;
   border-color: #e8e8e8;
   font-weight: bolder;
 }
