@@ -94,17 +94,14 @@ ul.category-list {
 }
 
 .app {
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
-  margin-left: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  border-radius: 1rem;
+  margin: 2rem;
   background-color: #fff;
   padding: 2rem;
 }
 
 .main-part {
-  min-height: 85vh;
+  min-height: calc(85vh - 3rem);
 }
 
 .footer {
