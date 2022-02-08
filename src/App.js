@@ -20,6 +20,7 @@ class App extends React.Component
   constructor(props) {
     super(props);
     this.state = {products : null, search_text : '', 
+      last_search_request : '',
       min_price : 0, max_price : 0, 
       start : -Infinity, end : Infinity};
   }
@@ -65,7 +66,7 @@ class App extends React.Component
 
     this.timeout_id = setTimeout(() => this.setState({products, selected_sizes, 
       available_sizes, categories, selected_categories, min_price, max_price, 
-      start, end}), 1000);
+      start, end, last_search_request : this.state.search_text}), 1000);
     this.setState({products : null});
   }
 
@@ -152,6 +153,10 @@ class App extends React.Component
         products.push(<li key="-1">Увы, ничего не найдено!</li>)
       }
 
+      let product_list_title = this.state.last_search_request !== '' ? 
+        `Найденные товары по запросу "${this.state.last_search_request}"`
+        : 'Доступные товары';
+
       return (
         <div className='app'>
           <div className='main-part'>
@@ -185,7 +190,7 @@ class App extends React.Component
                 </ul>
               </div>
               <div className="right-part">
-                <p>Найденные товары:</p>
+                <p>{product_list_title}</p>
                 <ul className="product-list">
                   {products}
                 </ul>
