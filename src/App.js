@@ -1,5 +1,6 @@
 import './App.css';
-import './DualSlider.css'
+import './DualSlider.css';
+import './Search.css';
 import React from 'react';
 
 function Checkbox({selected, label, onClick})
@@ -19,6 +20,26 @@ function Product({product : {product_name, brand, price}})
       <p>{product_name}</p>
       <p>{brand}</p>
       <p>Цена: {price}</p>
+    </div>
+  );
+}
+
+function Search({search_text, onSearchTextChange, onClick})
+{
+  const handle_key_down = (e) => {
+    if (e.key === 'Enter')
+      onClick();
+  };
+
+  return (
+    <div>
+      <label className="search">
+        <input type="search" value={search_text}
+          onChange={(e)=>{onSearchTextChange(e.target.value)}}
+          onKeyDown={handle_key_down}
+          placeholder="Наименование товара"/>
+      </label>
+      <button className="search" onClick={onClick}>Поиск</button>
     </div>
   );
 }
@@ -216,39 +237,56 @@ class App extends React.Component
         products.push(<li key="-1">Увы, ничего не найдено!</li>)
       }
 
-      return (<div>
-        <div>
-          <label>
-            Введите наименование товара:
-            <input type="search" value={this.state.search_text}
-              onChange={(e)=>{this.onSearchTextChange(e.target.value)}}/>
-          </label>
-          <button onClick={()=>{this.fetchData()}}>Поиск</button>
+      return (
+      <div className='app'>
+        <div className="wrapper border-bottom">
+          <div className="left-part website-logo">
+            <h1>Online Shop (Demo)</h1>
+          </div>
+          <div className="right-part">
+            <Search onSearchTextChange={text=>this.onSearchTextChange(text)}
+              onClick={()=>this.fetchData()}/>
+          </div>
         </div>
+        <div className="wrapper">
+          <div className="left-part">
+            <p>
+              Диапазон цен:
+            </p>
+            <DualSlider min_value={min_price} max_value={max_price} start={start} end={end} 
+              onChange={e => this.onPriceRangeChange(e)}/>
+            <p>
+              Категории:
+            </p>
+            <ul className="category-list">
+              {categories}
+            </ul>
+            <p>
+              Доступные размеры:
+            </p>
+            <ul className="size-list">
+              {av_sizes}
+            </ul>
+          </div>
+          <div className="right-part">
+            <p>Найденные товары:</p>
+            <ul>
+              {products}
+            </ul>
+          </div>
+        </div>
+        <footer>
           <p>
-            Диапазон цен:
+            Это пример использования React для создания главной страницы онлайн-магазина. Данная страница была создана исключительно для демонстрационных целей. 
           </p>
-          <DualSlider min_value={min_price} max_value={max_price} start={start} end={end} 
-            onChange={e => this.onPriceRangeChange(e)}/>
-        <div>
-          <ul className="category-list">
-            {categories}
-          </ul>
-          <p>Доступные размеры:</p>
-          <ul className="size-list">
-            {av_sizes}
-          </ul>
-        </div>
-        <div>
-          <p>Найденные товары:</p>
-          <ul>
-            {products}
-          </ul>
-        </div>
+          <p>
+            This is an example of using React to create the main page of an online store. This page was created for demonstration purposes only.
+          </p>
+        </footer>
       </div>);
     } 
     else 
-      return <div>Идет загрузка! Подождите пожалуйста</div>
+      return <div className='app' >Идет загрузка! Подождите пожалуйста</div>
   }
 }
 
