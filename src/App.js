@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import Search from './Search/Search';
 import DualSlider from './DualSlider/DualSlider';
+import Product from './Product/Product';
 import { clamp } from './utils'
 
 function Checkbox({selected, label, onClick})
@@ -11,17 +12,6 @@ function Checkbox({selected, label, onClick})
       <input type="checkbox" defaultChecked={selected} onChange={onClick}/>
       <span>{label}</span>
     </label>
-  );
-}
-
-function Product({product : {product_name, brand, price}})
-{
-  return (
-    <div>
-      <p>{product_name}</p>
-      <p>{brand}</p>
-      <p>Цена: {price}</p>
-    </div>
   );
 }
 
@@ -195,7 +185,7 @@ class App extends React.Component
           </div>
           <div className="right-part">
             <p>Найденные товары:</p>
-            <ul>
+            <ul className="product-list">
               {products}
             </ul>
           </div>

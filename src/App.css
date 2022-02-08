@@ -124,6 +124,16 @@ footer {
   font-size: 0.75rem;
 }
 
+ul.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 15rem);
+  padding-left: 0px;
+}
+
+.product-list li {
+  list-style-type: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

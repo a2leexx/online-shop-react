@@ -1,0 +1,40 @@
+.product {
+    width: 15rem;
+    margin: 1.5rem;
+  }
+  
+  .product p {
+    margin: 0 0 0 1rem;
+  }
+  
+  .product-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  
+  p.product-brand {
+    font-size: 0.75rem;
+    color: #777;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-price {
+    color: #777;
+    font-size: 0.75rem;
+  }
+  
+  .product-price-value {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  .photo-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e8e8e8;
+    height: 12rem;
+    width: 12rem;
+    margin-bottom: 0.5rem;
+  }
