@@ -153,52 +153,55 @@ class App extends React.Component
       }
 
       return (
-      <div className='app'>
-        <div className="wrapper border-bottom">
-          <div className="left-part website-logo">
-            <h1>Online Shop (Demo)</h1>
+        <div className='app'>
+          <div className='main-part'>
+            <div className="wrapper border-bottom">
+              <div className="left-part website-logo">
+                <h1>Online Shop (Demo)</h1>
+              </div>
+              <div className="right-part">
+                <Search onSearchTextChange={text=>this.onSearchTextChange(text)}
+                  onClick={()=>this.fetchData()}/>
+              </div>
+            </div>
+            <div className="wrapper">
+              <div className="left-part">
+                <p>
+                  Диапазон цен:
+                </p>
+                <DualSlider min_value={min_price} max_value={max_price} start={start} end={end} 
+                  onChange={e => this.onPriceRangeChange(e)}/>
+                <p>
+                  Категории:
+                </p>
+                <ul className="category-list">
+                  {categories}
+                </ul>
+                <p>
+                  Доступные размеры:
+                </p>
+                <ul className="size-list">
+                  {av_sizes}
+                </ul>
+              </div>
+              <div className="right-part">
+                <p>Найденные товары:</p>
+                <ul className="product-list">
+                  {products}
+                </ul>
+              </div>
+            </div>
           </div>
-          <div className="right-part">
-            <Search onSearchTextChange={text=>this.onSearchTextChange(text)}
-              onClick={()=>this.fetchData()}/>
-          </div>
+          <footer className='footer'>
+            <p>
+              Это пример использования React для создания главной страницы онлайн-магазина. Данная страница была создана исключительно для демонстрационных целей. 
+            </p>
+            <p>
+              This is an example of using React to create the main page of an online store. This page was created for demonstration purposes only.
+            </p>
+          </footer>
         </div>
-        <div className="wrapper">
-          <div className="left-part">
-            <p>
-              Диапазон цен:
-            </p>
-            <DualSlider min_value={min_price} max_value={max_price} start={start} end={end} 
-              onChange={e => this.onPriceRangeChange(e)}/>
-            <p>
-              Категории:
-            </p>
-            <ul className="category-list">
-              {categories}
-            </ul>
-            <p>
-              Доступные размеры:
-            </p>
-            <ul className="size-list">
-              {av_sizes}
-            </ul>
-          </div>
-          <div className="right-part">
-            <p>Найденные товары:</p>
-            <ul className="product-list">
-              {products}
-            </ul>
-          </div>
-        </div>
-        <footer>
-          <p>
-            Это пример использования React для создания главной страницы онлайн-магазина. Данная страница была создана исключительно для демонстрационных целей. 
-          </p>
-          <p>
-            This is an example of using React to create the main page of an online store. This page was created for demonstration purposes only.
-          </p>
-        </footer>
-      </div>);
+      );
     } 
     else 
       return <div className='app' >Идет загрузка! Подождите пожалуйста</div>

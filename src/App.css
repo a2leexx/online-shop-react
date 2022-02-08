@@ -99,9 +99,16 @@ ul.category-list {
   margin-left: 2rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  min-height: 90vw;
   background-color: #fff;
   padding: 2rem;
+}
+
+.main-part {
+  min-height: 85vh;
+}
+
+.footer {
+  min-height: 5vh;
 }
 
 .website-logo h1 {
