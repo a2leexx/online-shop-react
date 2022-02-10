@@ -147,13 +147,18 @@ class App extends React.Component
         <li key={x.product_id}><Product product={x}/></li>
       );
 
-      if (products.length === 0) {
-        products.push(<li key="-1">Увы, ничего не найдено!</li>)
-      }
+      let product_list_title; 
 
-      let product_list_title = this.state.last_search_request !== '' ? 
+      if (products.length === 0) {
+        product_list_title = 'Увы, ничего не найдено!';
+      }
+      else {
+        product_list_title = this.state.last_search_request !== '' ? 
         `Найденные товары по запросу "${this.state.last_search_request}"`
-        : 'Доступные товары:';
+        : 'Доступные товары';
+
+        product_list_title += ` (${products.length} шт.):`
+      }
 
       return (
         <div className='app'>
