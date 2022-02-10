@@ -4,6 +4,7 @@ import Search from './Search/Search';
 import DualSlider from './DualSlider/DualSlider';
 import Product from './Product/Product';
 import { clamp } from './utils'
+import all_products from './data';
 
 function Checkbox({selected, label, onClick})
 {
@@ -26,12 +27,6 @@ class App extends React.Component
   }
 
   fetchData() {
-    let all_products = [
-      { product_name : 'Кроссовки 1', available_size : [39, 40, 41, 42, 43], price : 4000,
-        brand : 'Adidas', category: 'Кроссовки' },
-      { product_name : 'Кроссовки 2', available_size : [40, 41, 43, 45, 46], price : 4500,
-        brand : 'Reebok', category: 'Кроссовки' }
-    ];
     let products = [];
     let available_sizes = new Set();
     let selected_sizes = new Set();

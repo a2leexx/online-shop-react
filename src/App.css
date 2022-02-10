@@ -130,7 +130,7 @@ footer {
 
 ul.product-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 15rem);
+  grid-template-columns: repeat(auto-fit, 13rem);
   padding-left: 0px;
 }
 
