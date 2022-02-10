@@ -55,6 +55,8 @@ class App extends React.Component
         available_sizes.add(s);
     }
 
+    available_sizes = [...available_sizes].sort((a, b) => a - b);
+
     let min_price = Math.min(...all_products.map(x => x.price));
     let max_price = Math.max(...all_products.map(x => x.price));
     let start = clamp(this.state.start, min_price, max_price);
