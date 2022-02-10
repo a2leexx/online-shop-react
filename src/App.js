@@ -59,10 +59,18 @@ class App extends React.Component
       categories.add(product.category);
     }
 
-    let min_price = Math.min(...products.map(x => x.price));
-    let max_price = Math.max(...products.map(x => x.price));
-    let start = clamp(this.state.start, min_price, max_price);
-    let end = clamp(this.state.end, min_price, max_price);
+    let min_price = this.state.min_price;
+    let max_price = this.state.max_price;
+    let start = this.state.start;
+    let end = this.state.end;
+    
+    if (products.length > 0)
+    {
+      min_price = Math.min(...products.map(x => x.price));
+      max_price = Math.max(...products.map(x => x.price));
+      start = clamp(this.state.start, min_price, max_price);
+      end = clamp(this.state.end, min_price, max_price);
+    }
 
     this.timeout_id = setTimeout(() => this.setState({products, selected_sizes, 
       available_sizes, categories, selected_categories, min_price, max_price, 
@@ -155,7 +163,7 @@ class App extends React.Component
 
       let product_list_title = this.state.last_search_request !== '' ? 
         `Найденные товары по запросу "${this.state.last_search_request}"`
-        : 'Доступные товары';
+        : 'Доступные товары:';
 
       return (
         <div className='app'>
@@ -165,7 +173,8 @@ class App extends React.Component
                 <h1>Online Shop (Demo)</h1>
               </div>
               <div className="right-part">
-                <Search onSearchTextChange={text=>this.onSearchTextChange(text)}
+                <Search search_text={this.state.search_text} 
+                  onSearchTextChange={text=>this.onSearchTextChange(text)}
                   onClick={()=>this.fetchData()}/>
               </div>
             </div>
