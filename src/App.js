@@ -40,8 +40,10 @@ class App extends React.Component
     let product_id = 0;
     let search_text = this.state.search_text.toLocaleLowerCase().trim();
 
-    for (let product of all_products)
+    for (let product of all_products) {
       product.product_id = product_id++;
+      categories.add(product.category);
+    }
 
     products = all_products.filter((product) => {
       let product_name = product.product_name.toLocaleLowerCase();
@@ -56,21 +58,12 @@ class App extends React.Component
     for (let product of products) {
       for (let s of product.available_size)
         available_sizes.add(s);
-      categories.add(product.category);
     }
 
-    let min_price = this.state.min_price;
-    let max_price = this.state.max_price;
-    let start = this.state.start;
-    let end = this.state.end;
-    
-    if (products.length > 0)
-    {
-      min_price = Math.min(...products.map(x => x.price));
-      max_price = Math.max(...products.map(x => x.price));
-      start = clamp(this.state.start, min_price, max_price);
-      end = clamp(this.state.end, min_price, max_price);
-    }
+    let min_price = Math.min(...all_products.map(x => x.price));
+    let max_price = Math.max(...all_products.map(x => x.price));
+    let start = clamp(this.state.start, min_price, max_price);
+    let end = clamp(this.state.end, min_price, max_price);
 
     this.timeout_id = setTimeout(() => this.setState({products, selected_sizes, 
       available_sizes, categories, selected_categories, min_price, max_price, 
