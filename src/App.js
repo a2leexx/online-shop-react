@@ -5,6 +5,8 @@ import DualSlider from './DualSlider/DualSlider';
 import Product from './Product/Product';
 import { clamp } from './utils'
 import all_products from './data';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Checkbox({selected, label, onClick})
 {
@@ -64,7 +66,7 @@ class App extends React.Component
 
     this.timeout_id = setTimeout(() => this.setState({products, selected_sizes, 
       available_sizes, categories, selected_categories, min_price, max_price, 
-      start, end, last_search_request : this.state.search_text}), 1000);
+      start, end, last_search_request : this.state.search_text}), 1500);
     this.setState({products : null});
   }
 
@@ -213,7 +215,18 @@ class App extends React.Component
       );
     } 
     else 
-      return <div className='app' >Идет загрузка! Подождите пожалуйста</div>
+      return <div className='app loading flexbox-centering' >
+        <div className="flexbox-centering">
+          <p>
+            Идет загрузка! Подождите пожалуйста
+          </p>
+          <div>
+            <FontAwesomeIcon icon={faSpinner} size="4x" 
+              style={{color: '#a8a8a8'}}
+              className="fa-pulse"/>
+          </div>
+        </div>
+      </div>
   }
 }
 

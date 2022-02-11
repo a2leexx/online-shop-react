@@ -138,6 +138,17 @@ ul.product-list {
   list-style-type: none;
 }
 
+.flexbox-centering {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loading {
+  min-height: calc(100vh - 8rem);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
