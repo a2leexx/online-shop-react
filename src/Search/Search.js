@@ -13,7 +13,7 @@ function Search({search_text, onSearchTextChange, onClick})
         <input type="search" value={search_text}
           onChange={(e)=>{onSearchTextChange(e.target.value)}}
           onKeyDown={handle_key_down}
-          placeholder="Наименование товара"/>
+          placeholder="Искать"/>
       </label>
       <button className="search" onClick={onClick}>Поиск</button>
     </div>
