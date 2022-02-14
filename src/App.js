@@ -205,6 +205,9 @@ class App extends React.Component
           </div>
           <footer className='footer'>
             <p>
+              <a href="https://github.com/a2leexx/online-shop-react">Исходный код на GitHub</a> 
+            </p>
+            <p>
               Это пример использования React для создания главной страницы онлайн-магазина. Данная страница была создана исключительно для демонстрационных целей. 
             </p>
             <p>
